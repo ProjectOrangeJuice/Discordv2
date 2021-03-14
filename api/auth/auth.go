@@ -1,17 +1,19 @@
 package main
 
 import (
-	"github.com/gorilla/mux"
-	"github.com/projectorangejuice/Discordv2/api"
+	"fmt"
 	"log"
 	"net/http"
-	"fmt"
+
+	"github.com/gorilla/mux"
+	"github.com/projectorangejuice/Discordv2/api"
 )
 
-func main(){
-
+func main() {
 	router := mux.NewRouter()
-	router.HandleFunc("/login", api.LoginHandler).Methods("GET")
-	fmt.Println("running")
-	log.Fatal(http.ListenAndServe(":8000",router))
+	router.HandleFunc("/login", api.LoginHandler).Methods("POST")
+
+	fmt.Println("Started auth server")
+
+	log.Fatal(http.ListenAndServe(":8000", router))
 }

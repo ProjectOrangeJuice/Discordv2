@@ -1,12 +1,30 @@
 package api
 
 import (
-	"github.com/projectorangejuice/Discordv2/db"
+	"io/ioutil"
+	"log"
 	"net/http"
-	"fmt"
+
+	"github.com/projectorangejuice/Discordv2/db"
 )
 
-func LoginHandler(w http.ResponseWriter, r *http.Request){
-a,b := db.DoesUserExist("test")
-fmt.Printf("a :%v b:%v\n",a,b)
+// LoginHandler reads the body as the username and returns 200 OK if accepted, or 401
+func LoginHandler(w http.ResponseWriter, r *http.Request) {
+	responseData, err := ioutil.ReadAll(r.Body)
+	if err != nil {
+		log.Printf("Failed to read body for username in login handler, %s", err)
+		http.Error(w, "Failed to read body", http.StatusInternalServerError)
+		return
+	}
+
+	ok, err := db.DoesUserExist(string(responseData))
+	if err != nil {
+		log.Printf("Failed to check username, %s", err)
+		http.Error(w, "Failed to read body", http.StatusInternalServerError)
+		return
+	}
+
+	if !ok {
+		w.WriteHeader(http.StatusUnauthorized)
+	}
 }
