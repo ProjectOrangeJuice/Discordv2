@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Disquord Vtoo</title>
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script
+			  src="https://code.jquery.com/jquery-3.6.0.slim.js"
+			  integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY="
+			  crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Disquord Vtoo</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+
+        <h1 class="mt-5">Disquord Vtoo</h1>
+        <p class="lead">Progress, future, ubiquity, vision ... this is Disquord Vtoo</p>
+        <img src="res/cat.gif" class="img-thumbnail">
+
+        <h2 class="form-signin-heading">Login</h2>
+        <input id="username" type="text" class="form-control" name="username" placeholder="username" required="" autofocus="" />
+        <button id="username-submit" style="margin-top:10px" class="btn btn-lg btn-primary bg-dark btn-block" type="submit">Login</button>   
+      
+    </div>
+    </div>
+  </div>
+</body>
+
+<script type="text/javascript">
+
+$("#username-submit").on("click", function(e) {
+    alert("submitted: " + $("#username").val());
+});
+
+</script>
+
+</html>
