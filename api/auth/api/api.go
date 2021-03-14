@@ -2,9 +2,9 @@ package api
 
 import (
 	"io/ioutil"
-	"log"
 	"net/http"
 
+	"github.com/ProjectOrangeJuice/golib-logging/logging"
 	"github.com/projectorangejuice/Discordv2/db"
 )
 
@@ -12,15 +12,13 @@ import (
 func LoginHandler(w http.ResponseWriter, r *http.Request) {
 	responseData, err := ioutil.ReadAll(r.Body)
 	if err != nil {
-		log.Printf("Failed to read body for username in login handler, %s", err)
-		http.Error(w, "Failed to read body", http.StatusInternalServerError)
+		logging.LogHTTP("loginHandler", "Failed to read body", err, w)
 		return
 	}
 
 	ok, err := db.DoesUserExist(string(responseData))
 	if err != nil {
-		log.Printf("Failed to check username, %s", err)
-		http.Error(w, "Failed to read body", http.StatusInternalServerError)
+		logging.LogHTTP("LoginHandler", "Failed to check username", err, w)
 		return
 	}
 

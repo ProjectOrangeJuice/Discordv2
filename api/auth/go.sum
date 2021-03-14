@@ -1,3 +1,5 @@
+github.com/ProjectOrangeJuice/golib-logging v0.0.0-20210314194145-150d82cead53 h1:TSoYOoN217N1rqnyZfKFDiat+OuEShwn7OtZQNcxt9Q=
+github.com/ProjectOrangeJuice/golib-logging v0.0.0-20210314194145-150d82cead53/go.mod h1:UDVCFmLK/V+RCLSO+ysi2s0pySKywJRmWAdEoMhMfEQ=
 github.com/gorilla/mux v1.8.0 h1:i40aqfkR1h2SlN9hojwV5ZA91wcXFOvkdNIeFDP5koI=
 github.com/gorilla/mux v1.8.0/go.mod h1:DVbg23sWSpFRCP0SfiEN6jmj59UnW/n46BH5rLB71So=
 github.com/mattn/go-sqlite3 v1.14.6 h1:dNPt6NO46WmLVt2DLNpwczCmdV5boIZ6g/tlDrlRUbg=
