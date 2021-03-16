@@ -1,7 +1,6 @@
 package api
 
 import (
-	"io/ioutil"
 	"net/http"
 
 	"github.com/ProjectOrangeJuice/golib-logging/logging"
@@ -10,13 +9,13 @@ import (
 
 // LoginHandler reads the body as the username and returns 200 OK if accepted, or 401
 func LoginHandler(w http.ResponseWriter, r *http.Request) {
-	responseData, err := ioutil.ReadAll(r.Body)
-	if err != nil {
-		logging.LogHTTP("loginHandler", "Failed to read body", err, w)
-		return
+
+	username := r.FormValue("username")
+	if username == "" {
+		http.Error(w, "Username empty", http.StatusInternalServerError)
 	}
 
-	ok, err := db.DoesUserExist(string(responseData))
+	ok, err := db.DoesUserExist(username)
 	if err != nil {
 		logging.LogHTTP("LoginHandler", "Failed to check username", err, w)
 		return
@@ -25,4 +24,7 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 	if !ok {
 		w.WriteHeader(http.StatusUnauthorized)
 	}
+
+	c := http.Cookie{Name: "orange-auth", Value: "Sir Dukkins"}
+	http.SetCookie(w, &c)
 }
